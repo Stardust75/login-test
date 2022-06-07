@@ -26,19 +26,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { ElMessage } from "element-plus";
+import { useUser } from "@/composables/useUser";
 
-const loginModel = ref({
-  username: "",
-  password: "",
-});
-const user = ref();
-const login = () => {
-  user.value = { id: 1, username: loginModel.value.username };
-  ElMessage.success("Login success");
-};
-const loggedIn = computed(() => user.value?.id);
+const { loggedIn, login, loginModel, user } = useUser();
 </script>
 <style>
 @media (min-width: 1024px) {
