@@ -1,7 +1,11 @@
 <template>
   <div class="about">
     <h1>login</h1>
-    <el-form ref="form" :model="loginModel" label-width="80px">
+    <p v-if="loggedIn">
+      Welcome {{ user?.username }},
+      <!-- <a href="#" @click.prevent="logout">Logout</a> -->
+    </p>
+    <el-form v-if="!loggedIn" ref="form" :model="loginModel" label-width="80px">
       <el-form-item label="Username">
         <el-input
           v-model="loginModel.username"
@@ -22,7 +26,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { ElMessage } from "element-plus";
 
 const loginModel = ref({
@@ -34,6 +38,7 @@ const login = () => {
   user.value = { id: 1, username: loginModel.value.username };
   ElMessage.success("Login success");
 };
+const loggedIn = computed(() => user.value?.id);
 </script>
 <style>
 @media (min-width: 1024px) {
