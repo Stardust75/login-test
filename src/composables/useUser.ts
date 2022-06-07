@@ -1,11 +1,16 @@
+import { useStorage, StorageSerializers } from "@vueuse/core";
 import { ElMessage } from "element-plus";
 import { computed, ref } from "vue";
+
+
+const user = useStorage('user',null,undefined,{
+  serializer:StorageSerializers.object
+})
 export const useUser =() => {
   const loginModel = ref({
     username: "",
     password: "",
   });
-  const user = ref();
   const login = () => {
     user.value = { id: 1, username: loginModel.value.username };
     ElMessage.success("Login success");
