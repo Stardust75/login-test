@@ -3,7 +3,7 @@
     <h1>login</h1>
     <p v-if="loggedIn">
       Welcome {{ user?.username }},
-      <!-- <a href="#" @click.prevent="logout">Logout</a> -->
+      <a href="#" @click.prevent="logout">Logout</a>
     </p>
     <el-form v-if="!loggedIn" ref="form" :model="loginModel" label-width="80px">
       <el-form-item label="Username">
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { useUser } from "@/composables/useUser";
 
-const { loggedIn, login, loginModel, user } = useUser();
+const { loggedIn, login, loginModel, user, logout } = useUser();
 </script>
 <style>
 @media (min-width: 1024px) {

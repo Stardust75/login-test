@@ -11,10 +11,15 @@ export const useUser =() => {
     ElMessage.success("Login success");
   };
   const loggedIn = computed(() => user.value?.id);
+  const logout =async() => {
+    user.value=null;
+    ElMessage.success("Register success")
+  }
   return {
     loginModel,
     user,
     login,
-    loggedIn
+    loggedIn,
+    logout
   }
 }
