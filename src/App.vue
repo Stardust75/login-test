@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "@/components/HelloWorld.vue";
+import { useCart } from "./composables/useCart";
+
+const { totalProduct } = useCart();
 </script>
 
 <template>
@@ -19,6 +22,8 @@ import HelloWorld from "@/components/HelloWorld.vue";
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/cart">mycart{{ totalProduct }}</RouterLink>
+        <RouterLink to="/products">Products</RouterLink>
         <RouterLink to="/login">login</RouterLink>
       </nav>
     </div>
